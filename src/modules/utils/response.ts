@@ -9,6 +9,7 @@ const success = (data: any) => {
 }
 
 const fail = (e: Error & { status: number }) => {
+  console.error(e)
   return {
     statusCode: e.status || 500,
     body: JSON.stringify({ error: e.message }),

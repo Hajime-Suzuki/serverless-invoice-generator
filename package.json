@@ -15,6 +15,7 @@
     "@types/aws-lambda": "^8.10.44",
     "@types/jest": "^25.1.3",
     "@types/node": "^13.7.6",
+    "@types/puppeteer-core": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",
     "aws-sdk": "^2.628.0",
@@ -24,6 +25,7 @@
     "fork-ts-checker-webpack-plugin": "^4.0.5",
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
+    "puppeteer": "^2.1.1",
     "serverless": "^1.64.1",
     "serverless-offline": "^5.12.1",
     "serverless-pseudo-parameters": "^2.5.0",
@@ -34,5 +36,8 @@
     "webpack": "^4.41.6",
     "webpack-node-externals": "^1.7.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "chrome-aws-lambda": "^2.1.1",
+    "puppeteer-core": "^2.1.1"
+  }
 }

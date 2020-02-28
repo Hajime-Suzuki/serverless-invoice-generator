@@ -106,3 +106,5 @@ dist
 .serverless
 .webpack
 **/*.http
+
+*.pdf
