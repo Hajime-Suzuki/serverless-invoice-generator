@@ -1,0 +1,29 @@
+service: serverless-invoice-generator
+
+functions: ${file(./resources/functions.yml)}
+resources: ${file(./resources/resources.yml)}
+
+provider:
+  name: aws
+  region: 'eu-central-1'
+  stage: ${opt:stage, 'dev'}
+  runtime: nodejs12.x
+  environment:
+    REGION: ${self:provider.region}
+
+custom:
+  serverless-offline:
+    port: 4000
+
+  webpack:
+    includeModules:
+      forceExclude:
+        - aws-sdk
+
+package:
+  individually: true
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-pseudo-parameters

@@ -1,0 +1,7 @@
+main:
+  handler: src/main.handler
+  name: ${self:service}__generate-invoice
+  events:
+    - http:
+        path: /
+        method: get
