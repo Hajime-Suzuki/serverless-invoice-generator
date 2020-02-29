@@ -1,10 +1,7 @@
 const success = (data: any) => {
   return {
     statusCode: 200,
-    headers: {
-      'Content-Type': 'text/html',
-    },
-    body: data,
+    body: JSON.stringify(data),
   }
 }
 

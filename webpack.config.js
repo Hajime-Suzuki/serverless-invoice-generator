@@ -3,6 +3,7 @@ const path = require('path')
 const slsw = require('serverless-webpack')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 const nodeExternals = require('webpack-node-externals')
+const CopyPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
@@ -34,5 +35,7 @@ module.exports = {
       async: true,
       eslint: true,
     }),
+
+    new CopyPlugin([{ from: 'src/pdf-template', to: 'pdf-template' }]),
   ],
 }

@@ -1,0 +1,71 @@
+html 
+  head
+    link(href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    style
+      include ./materialize.min.css
+      include ./index.css
+  body
+    .bg(style='background-image: url(' + bgUrl + ')') 
+
+    .wrapper
+      .logo
+        include ./logo.svg
+
+      .spacer
+
+      .main
+        .client-info
+          .group
+            p.invoice-number Factuur #{invoiceInfo.invoiceNumber}
+          .group
+            p.name #{clientInfo.firstName || ''} #{clientInfo.lastName || ''}
+            p.address #{clientInfo.streetAddress || ''}, #{clientInfo.postalCode} #{clientInfo.city || ''}
+
+        .basic-info
+          .group
+            p.phone
+              i.material-icons local_phone
+              | #{userInfo.phone || ''}
+            .email 
+              i.material-icons email
+              | #{userInfo.email}
+            p.address 
+              i.material-icons location_on
+              | #{userInfo.streetAddress || ''}, #{userInfo.postalCode || ''} #{userInfo.city || ''}
+          .group
+            p.btw BTW: #{userInfo.btw || ''}
+            p.kvk KvK: #{userInfo.kvk || ''}
+            p.bank IBAN: #{userInfo.iban || ''}
+          .group
+            p.invoice-date Factuurdatum: #{invoiceInfo.invoiceDate || ''}
+            p.invoice-number Factuurnummer: #{invoiceInfo.invoiceNumber || ''}
+        
+        .spacer
+
+        .table
+          table
+            thead
+              tr
+                th.name Omschrijving
+                th.narrow Bedrag
+                th.narrow Aantal
+                th.narrow BTW
+            tbody
+              each income in incomes
+                tr
+                  td.name #{income.name || ''}
+                  td.narrow.price #{income.price || ''}
+                  td.narrow #{income.quantity || ''}
+                  td.narrow #{income.taxRate || ''}%
+          table
+            tbody.total-table-body
+              tr.total-section
+                td.label Subtotaal             
+                td.price #{totalPrices.subtotal || ''}
+              tr.total-section
+                td.label BTW
+                td.price #{totalPrices.taxTotal || ''}
+              tr.total-section
+                td.label Totaal            
+                td.price #{totalPrices.grandTotal || ''}

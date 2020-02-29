@@ -1,2 +1,3 @@
-export const IS_LOCAL = process.env.STAGE !== 'prod' && process.env.STAGE !== 'dev'
-export const STAGE = process.env.STAGE
+export const STAGE = process.env.STAGE as string
+
+export const IS_LOCAL = STAGE !== 'prod' && STAGE !== 'dev'

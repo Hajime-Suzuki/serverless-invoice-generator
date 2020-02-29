@@ -1,23 +1,13 @@
-import { getBrowser } from '@modules/utils/puppeteer'
+import { IS_LOCAL } from '@modules/utils/environments'
 import * as fs from 'fs'
+import { renderPdf } from './render-pdf'
 
 const main = async () => {
-  const html =
-    '<html><head><title>HTML from API Gateway/Lambda</title></head>' +
-    '<body><h1>TEST!!!</h1></body></html>'
+  const pdf = await renderPdf()
 
-  const browser = await getBrowser()
-  const page = await browser.newPage()
-  await page.setContent(html)
-
-  const res = await page.pdf({
-    format: 'A4',
-    displayHeaderFooter: true,
-    footerTemplate: '<h4>footer</h4>',
-    headerTemplate: '<h4>header</h4>',
-  })
-
-  fs.writeFileSync('files/test.pdf', res) // for development
+  if (IS_LOCAL) {
+    fs.writeFileSync('files/test.pdf', pdf)
+  }
 
   return true
 }

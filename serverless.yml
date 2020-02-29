@@ -6,11 +6,19 @@ resources: ${file(./resources/resources.yml)}
 provider:
   name: aws
   region: 'eu-central-1'
-  stage: ${opt:stage, 'dev'}
+  stage: ${opt:stage, 'local'}
   runtime: nodejs12.x
   environment:
     REGION: ${self:provider.region}
     STAGE: ${self:provider.stage}
+
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 's3:PutObject'
+        - 's3:ListObject'
+        - 's3:GetObject'
+      Resource: 'arn:aws:s3::::hajime-files'
 
 custom:
   serverless-offline:
@@ -20,6 +28,7 @@ custom:
     includeModules:
       forceExclude:
         - aws-sdk
+        - puppeteer
 
 package:
   individually: true
