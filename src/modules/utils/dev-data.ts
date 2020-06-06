@@ -31,7 +31,7 @@ const incomes = [
     quantity: 2,
     taxRate: 21,
   },
-  { name: 'another', price: '€116.01', quantity: 1, taxRate: 21 },
+  { name: 'ちゃも', price: '€116.01', quantity: 1, taxRate: 21 },
   { name: 'another', price: '€116.01', quantity: 1, taxRate: 21 },
   { name: 'another', price: '€116.01', quantity: 1, taxRate: 21 },
   { name: 'another', price: '€116.01', quantity: 1, taxRate: 21 },
