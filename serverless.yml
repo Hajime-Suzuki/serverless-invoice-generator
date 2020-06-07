@@ -6,11 +6,14 @@ resources: ${file(./resources/resources.yml)}
 provider:
   name: aws
   region: 'eu-central-1'
-  stage: ${opt:stage, 'local'}
+  stage: ${self:custom.params.stage}
   runtime: nodejs12.x
+  profile: ${self:custom.params.profile}
   environment:
-    REGION: ${self:provider.region}
-    STAGE: ${self:provider.stage}
+    REGION: ${self:custom.params.region}
+    STAGE: ${self:custom.params.stage}
+    BUCKET: ${self:custom.params.bucket}
+    PROFILE: ${self:custom.params.profile}
 
   iamRoleStatements:
     - Effect: 'Allow'
@@ -18,9 +21,15 @@ provider:
         - 's3:PutObject'
         - 's3:ListObject'
         - 's3:GetObject'
-      Resource: 'arn:aws:s3::::hajime-files'
+      Resource: arn:aws:s3::::${self:provider.environment.BUCKET}
 
 custom:
+  params:
+    stage: ${opt:stage, 'local'}
+    profile: ${opt:profile, 'hajime'}
+    region: ${opt:region, 'eu-central-1'}
+    bucket: ${opt:pdf-bucket, 'hajime-files-${self:custom.params.stage}'}
+
   serverless-offline:
     port: 4000
 

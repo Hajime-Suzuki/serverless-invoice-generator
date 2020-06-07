@@ -1,7 +1,9 @@
 main:
   handler: src/main.handler
   name: ${self:service}__generate-invoice
+  memorySize: 2048
+  timeout: 20
   events:
     - http:
         path: /
-        method: get
+        method: post

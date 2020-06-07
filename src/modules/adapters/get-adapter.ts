@@ -1,5 +1,4 @@
-import { IS_LOCAL } from '@modules/utils/environments'
-import { localAdapter } from './local'
-import { prodAdapter } from './prod'
+import { localWithS3Adapter } from './local-with-s3'
 
-export const getAdapter = () => (IS_LOCAL ? localAdapter : prodAdapter)
+export const getAdapter = () => localWithS3Adapter
+// export const getAdapter = () => (IS_LOCAL ? localAdapter : prodAdapter)

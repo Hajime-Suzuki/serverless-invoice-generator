@@ -31,12 +31,12 @@ const incomes = [
     quantity: 2,
     taxRate: 21,
   },
-  { name: 'ちゃも', price: '€116.01', quantity: 1, taxRate: 21 },
-  { name: 'another', price: '€116.01', quantity: 1, taxRate: 21 },
-  { name: 'another', price: '€116.01', quantity: 1, taxRate: 21 },
-  { name: 'another', price: '€116.01', quantity: 1, taxRate: 21 },
-  { name: 'another', price: '€116.01', quantity: 1, taxRate: 21 },
-  { name: 'another', price: '€116.01', quantity: 1, taxRate: 21 },
+  { name: 'another1', price: '€116.01', quantity: 1, taxRate: 21 },
+  { name: 'another2', price: '€116.01', quantity: 1, taxRate: 21 },
+  { name: 'another3', price: '€116.01', quantity: 1, taxRate: 21 },
+  { name: 'another4', price: '€116.01', quantity: 1, taxRate: 21 },
+  { name: 'another5', price: '€116.01', quantity: 1, taxRate: 21 },
+  { name: 'another6', price: '€116.01', quantity: 1, taxRate: 21 },
 ]
 
 const totalPrices = {

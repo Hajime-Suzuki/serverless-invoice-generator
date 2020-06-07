@@ -5,15 +5,17 @@ import { data } from '@modules/utils/dev-data'
 import { parseEventBody } from '@modules/utils/event'
 import { response } from '@modules/utils/response'
 import { APIGatewayProxyResult } from 'aws-lambda'
+import { IS_LOCAL } from '@modules/utils/environments'
 
 export const handler = async (event: GatewayEvent<string>): Promise<APIGatewayProxyResult> => {
   try {
-    // fake data for developing purpose
-    (event as any).body = JSON.stringify(data)
+    if (IS_LOCAL) {
+      // fake data for developing purpose
+      (event as any).body = JSON.stringify(data)
+    }
 
     const adapter = getAdapter()
     const payload = parseEventBody(event)
-
     const res = await generatePdf(adapter)({ payload })
 
     return response.success(res)
