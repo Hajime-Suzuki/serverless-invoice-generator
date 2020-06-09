@@ -28,7 +28,7 @@ custom:
     stage: ${opt:stage, 'local'}
     profile: ${opt:profile, 'hajime'}
     region: ${opt:region, 'eu-central-1'}
-    bucket: ${opt:pdf-bucket, 'hajime-files-${self:custom.params.stage}'}
+    bucket: ${opt:pdf-bucket, 'generated-invoices-${self:custom.params.stage}'}
 
   serverless-offline:
     port: 4000
