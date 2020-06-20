@@ -1,4 +1,4 @@
-import { ValidationError, ObjectSchema } from 'yup'
+import { ValidationError, ObjectSchema, ArraySchema } from 'yup'
 
 export function assertValidData<A>(res: ValidationError | A): asserts res is A {
   if (isValidationError(res))
@@ -8,7 +8,7 @@ export function assertValidData<A>(res: ValidationError | A): asserts res is A {
 const isValidationError = (e: any): e is ValidationError => e instanceof ValidationError
 
 export const validate = async <T>(
-  schema: ObjectSchema,
+  schema: ObjectSchema | ArraySchema<any>,
   payload: any,
 ): Promise<T | ValidationError> => {
   const res = await schema

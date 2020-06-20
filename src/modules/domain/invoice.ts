@@ -63,3 +63,46 @@ export const mkInvoiceInfo = async (payload: Partial<InvoiceInfo>): Promise<Invo
     invoiceDate,
   } as InvoiceInfo
 }
+
+export const mkItems = async (payload: Item[]) => {
+  const schema = yup
+    .array(
+      yup.object({
+        name: yup.string().required(),
+        price: yup.string().required(),
+        quantity: yup
+          .number()
+          .positive()
+          .required(),
+        taxRate: yup.string().required(),
+      }),
+    )
+    .required('items is required')
+
+  const res = await validate<Item[]>(schema, payload)
+
+  assertValidData(res)
+
+  return res
+}
+
+export const mkReceiver = async (payload: Receiver) => {
+  const schema = yup.object({
+    name: yup.string().required(),
+    email: yup.string().required(),
+    address: addressSchema,
+  })
+
+  const res = await validate<Receiver>(schema, payload)
+
+  assertValidData(res)
+
+  return res
+}
+
+const addressSchema = yup.object({
+  streetAddress: yup.string().required(),
+  postalCode: yup.string().required(),
+  city: yup.string().required(),
+  country: yup.string().required(),
+})

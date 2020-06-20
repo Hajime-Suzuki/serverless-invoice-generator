@@ -1,4 +1,4 @@
-import { mkInvoiceInfo } from '../invoice'
+import { mkInvoiceInfo, mkItems, mkReceiver } from '../invoice'
 
 describe('domain#invoice', () => {
   describe('InvoiceInfo', () => {
@@ -27,6 +27,42 @@ describe('domain#invoice', () => {
       const res = await mkInvoiceInfo(data)
 
       expect(res).toMatchObject(data)
+    })
+  })
+
+  describe('Items', () => {
+    test('should reject with aggregated error message if input is wrong', async () => {
+      const res = mkItems([{} as any])
+      await expect(res).rejects.toThrowError(/name.+price.+quantity.+taxRate/)
+    })
+    test('should return invoice if input is correct', async () => {
+      const items = [{ name: 'item1', price: '12.55', quantity: 12, taxRate: '9' }]
+      const res = await mkItems(items)
+      expect(res).toMatchObject(items)
+    })
+  })
+
+  describe('Receiver', () => {
+    test('should reject with aggregated error message if input is wrong', async () => {
+      const res = mkReceiver({} as any)
+
+      await expect(res).rejects.toThrowError(
+        /name.+email.+address.+streetAddress.+postalCode.+city.+country/,
+      )
+    })
+    test('should return invoice if input is correct', async () => {
+      const receiver = {
+        name: 'name',
+        email: 'email is not validated though',
+        address: {
+          streetAddress: 'street1',
+          postalCode: '1234AB',
+          city: 'some city',
+          country: 'Netherlands',
+        },
+      }
+      const res = await mkReceiver(receiver)
+      expect(res).toMatchObject(receiver)
     })
   })
 })
