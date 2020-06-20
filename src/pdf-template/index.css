@@ -147,11 +147,38 @@ html {
 .spacer {
   width: 100%;
   margin-top: 15mm;
+  fill: #535353;
+}
+
+.logo-section {
+  width: 25mm;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo {
-  width: 90%;
-  margin: auto;
+  width: 25mm;
+  /* margin: auto; */
+}
+
+.border {
+  width: 30mm;
+  height: 0.5mm;
+  background-color: rgb(202, 202, 202);
+  margin-top: 3mm;
+}
+
+.name {
+  margin-top: 3mm;
+  width: 30mm;
+  /* margin: auto; */
+}
+
+.name path,
+.logo path {
+  fill: #555555;
 }
 
 .main {
