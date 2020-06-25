@@ -10,6 +10,10 @@ export type Port = {
   ) => Promise<{
     url: string
   }>
-  renderPdf: (data: Payload) => Promise<Buffer>
+  renderPdf: (
+    data: Invoice & {
+      totals: { subtotal: string; taxTotal: string; total: string }
+    },
+  ) => Promise<Buffer>
 }
 export type Payload = Maybe<Invoice>

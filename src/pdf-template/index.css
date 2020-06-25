@@ -151,7 +151,7 @@ html {
 }
 
 .logo-section {
-  width: 25mm;
+  width: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -160,7 +160,6 @@ html {
 
 .logo {
   width: 25mm;
-  /* margin: auto; */
 }
 
 .border {
@@ -168,11 +167,12 @@ html {
   height: 0.5mm;
   background-color: rgb(202, 202, 202);
   margin-top: 3mm;
+  display: none;
 }
 
 .name {
   margin-top: 3mm;
-  width: 30mm;
+  width: 35mm;
   /* margin: auto; */
 }
 
@@ -188,7 +188,9 @@ html {
 }
 
 .basic-info {
-  width: 30%;
+  width: 37%;
+  font-size: 1em;
+  line-height: 130%;
 }
 .basic-info .email,
 .basic-info .address,
@@ -225,7 +227,7 @@ html {
   width: 50%;
 }
 .client-info .invoice-number {
-  font-size: 2.5em;
+  font-size: 1.75em;
   line-height: 1em;
 }
 .client-info .name {

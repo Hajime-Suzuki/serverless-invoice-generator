@@ -129,6 +129,7 @@ export const mkSender = async (payload: Maybe<Sender>) => {
       email: yup.string().required(),
       phone: yup.string().required(),
       btw: yup.string().required(),
+      kvk: yup.string().required(),
       iban: yup.string().required(),
       address: getAddressSchema('address of sender is required'),
     })

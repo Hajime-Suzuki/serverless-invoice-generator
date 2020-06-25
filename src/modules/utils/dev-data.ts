@@ -1,29 +1,36 @@
-const userInfo = {
+const sender = {
   name: 'Hajime Suzuki',
   email: 'teashtahstahstahtsst@test.com',
   phone: '0612345678',
   btw: 'NL123408910238',
   kvk: 12341234,
   iban: 'NL12INGB1234567890',
-  streetAddress: 'Super-test Street test test',
-  postalCode: '1234AB',
-  city: 'Amsterdam',
+  address: {
+    streetAddress: 'Super-test Street test test',
+    postalCode: '1234AB',
+    city: 'Amsterdam',
+    country: 'Netherlands',
+  },
+}
+
+const receiver = {
+  name: 'Test company international B.V',
+  email: 'test@email.com',
+  address: {
+    streetAddress: 'Another test street address',
+    postalCode: '9875AB',
+    city: 'Rotterdam',
+    country: 'Netherlands',
+  },
 }
 
 const invoiceInfo = {
-  name: 'Invoice Title',
+  invoiceTitle: 'Invoice Title',
   invoiceNumber: '20185843ashtashtashta',
   invoiceDate: '2018-12-22',
 }
 
-const clientInfo = {
-  name: 'Test company international B.V',
-  streetAddress: 'Another test street address',
-  postalCode: '9875AB',
-  city: 'Rotterdam',
-}
-
-const incomes = [
+const items = [
   { name: 'testasht ashta sht asht ', price: '€12.01', quantity: 5, taxRate: 21 },
   {
     name: 'some  ahst ahashasht ahtaahsr  ahst a ahst aasht ash tash asht ash tasht ',
@@ -46,9 +53,9 @@ const totalPrices = {
 }
 
 export const data = {
-  userInfo,
   invoiceInfo,
-  clientInfo,
-  incomes,
+  sender,
+  receiver,
+  items,
   totalPrices,
 }

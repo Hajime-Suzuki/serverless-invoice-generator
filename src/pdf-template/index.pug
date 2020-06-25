@@ -24,27 +24,27 @@ html
           .group
             p.invoice-number Factuur #{invoiceInfo.invoiceNumber}
           .group
-            p.name #{clientInfo.firstName || ''} #{clientInfo.lastName || ''}
-            p.address #{clientInfo.streetAddress || ''}, #{clientInfo.postalCode} #{clientInfo.city || ''}
+            p.name #{receiver.name} 
+            p.address #{receiver.address.streetAddress}, #{receiver.address.postalCode} #{receiver.address.city}
 
         .basic-info
           .group
             p.phone
               i.material-icons local_phone
-              | #{userInfo.phone || ''}
+              | #{sender.phone}
             .email 
               i.material-icons email
-              | #{userInfo.email}
+              | #{sender.email}
             p.address 
               i.material-icons location_on
-              | #{userInfo.streetAddress || ''}, #{userInfo.postalCode || ''} #{userInfo.city || ''}
+              | #{sender.address.streetAddress} #{sender.address.postalCode} #{sender.address.city}
           .group
-            p.btw BTW: #{userInfo.btw || ''}
-            p.kvk KvK: #{userInfo.kvk || ''}
-            p.bank IBAN: #{userInfo.iban || ''}
+            p.btw BTW: #{sender.btw}
+            p.kvk KvK: #{sender.kvk}
+            p.bank IBAN: #{sender.iban}
           .group
-            p.invoice-date Factuurdatum: #{invoiceInfo.invoiceDate || ''}
-            p.invoice-number Factuurnummer: #{invoiceInfo.invoiceNumber || ''}
+            p.invoice-date Factuurdatum: #{invoiceInfo.invoiceDate}
+            p.invoice-number Factuurnummer: #{invoiceInfo.invoiceNumber}
         
         .spacer
 
@@ -57,20 +57,20 @@ html
                 th.narrow Aantal
                 th.narrow BTW
             tbody
-              each income in incomes
+              each item in items
                 tr
-                  td.name #{income.name || ''}
-                  td.narrow.price #{income.price || ''}
-                  td.narrow #{income.quantity || ''}
-                  td.narrow #{income.taxRate || ''}%
+                  td.name #{item.name || ''}
+                  td.narrow.price #{item.price || ''}
+                  td.narrow #{item.quantity || ''}
+                  td.narrow #{item.taxRate || ''}%
           table
             tbody.total-table-body
               tr.total-section
                 td.label Subtotaal             
-                td.price #{totalPrices.subtotal || ''}
+                td.price #{totals.subtotal || ''}
               tr.total-section
                 td.label BTW
-                td.price #{totalPrices.taxTotal || ''}
+                td.price #{totals.taxTotal || ''}
               tr.total-section
                 td.label Totaal            
-                td.price #{totalPrices.grandTotal || ''}
+                td.price #{totals.total || ''}
