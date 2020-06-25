@@ -1,8 +1,9 @@
 import { formatDate } from '@modules/utils/date'
 import { assertValidData, validate } from '@modules/utils/validation'
 import * as yup from 'yup'
+import { Maybe } from '@modules/types'
 
-type Invoice = {
+export type Invoice = {
   invoiceInfo: InvoiceInfo
   sender: Sender
   receiver: Receiver
@@ -43,13 +44,32 @@ type Item = {
   taxRate: string
 }
 
-export const mkInvoiceInfo = async (payload: Partial<InvoiceInfo>): Promise<InvoiceInfo> => {
-  const schema = yup.object({
-    invoiceTitle: yup.string().required(),
-    invoiceNumber: yup.string().required(),
-    invoiceDate: yup.date().required(),
-  })
-  const invoiceDate = formatDate(payload.invoiceDate)
+export const mkInvoice = async (payload: Maybe<Invoice>) => {
+  const [invoiceInfo, sender, receiver, items] = await Promise.all([
+    mkInvoiceInfo(payload?.invoiceInfo),
+    mkSender(payload?.sender),
+    mkReceiver(payload?.receiver),
+    mkItems(payload?.items),
+  ])
+
+  return {
+    invoiceInfo,
+    sender,
+    receiver,
+    items,
+  } as Invoice
+}
+
+export const mkInvoiceInfo = async (payload: Maybe<InvoiceInfo>) => {
+  const schema = yup
+    .object({
+      invoiceTitle: yup.string().required(),
+      invoiceNumber: yup.string().required(),
+      invoiceDate: yup.date().required(),
+    })
+    .required('invoice info is required')
+
+  const invoiceDate = formatDate(payload?.invoiceDate)
 
   const res = await validate<InvoiceInfo>(schema, {
     ...payload,
@@ -64,7 +84,7 @@ export const mkInvoiceInfo = async (payload: Partial<InvoiceInfo>): Promise<Invo
   } as InvoiceInfo
 }
 
-export const mkItems = async (payload: Item[]) => {
+export const mkItems = async (payload: Maybe<Item[]>) => {
   const schema = yup
     .array(
       yup.object({
@@ -86,12 +106,14 @@ export const mkItems = async (payload: Item[]) => {
   return res
 }
 
-export const mkReceiver = async (payload: Receiver) => {
-  const schema = yup.object({
-    name: yup.string().required(),
-    email: yup.string().required(),
-    address: addressSchema,
-  })
+export const mkReceiver = async (payload: Maybe<Receiver>) => {
+  const schema = yup
+    .object({
+      name: yup.string().required(),
+      email: yup.string().required(),
+      address: getAddressSchema('address of receiver is required'),
+    })
+    .required('receiver is required')
 
   const res = await validate<Receiver>(schema, payload)
 
@@ -100,9 +122,31 @@ export const mkReceiver = async (payload: Receiver) => {
   return res
 }
 
-const addressSchema = yup.object({
-  streetAddress: yup.string().required(),
-  postalCode: yup.string().required(),
-  city: yup.string().required(),
-  country: yup.string().required(),
-})
+export const mkSender = async (payload: Maybe<Sender>) => {
+  const schema = yup
+    .object({
+      name: yup.string().required(),
+      email: yup.string().required(),
+      phone: yup.string().required(),
+      btw: yup.string().required(),
+      iban: yup.string().required(),
+      address: getAddressSchema('address of sender is required'),
+    })
+    .required('sender is required')
+
+  const res = await validate<Sender>(schema, payload)
+
+  assertValidData(res)
+
+  return res
+}
+
+const getAddressSchema = (requiredMessage: string) =>
+  yup
+    .object({
+      streetAddress: yup.string().required(),
+      postalCode: yup.string().required(),
+      city: yup.string().required(),
+      country: yup.string().required(),
+    })
+    .required(requiredMessage)

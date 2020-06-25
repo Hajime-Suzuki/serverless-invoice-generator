@@ -1,3 +1,6 @@
+import { Maybe } from '@modules/types'
+import { Invoice } from './invoice'
+
 export type Port = {
   savePdf: (
     pdf: Buffer,
@@ -9,4 +12,4 @@ export type Port = {
   }>
   renderPdf: (data: Payload) => Promise<Buffer>
 }
-export type Payload = any
+export type Payload = Maybe<Invoice>
