@@ -14,11 +14,11 @@ const sender = {
 }
 
 const receiver = {
-  name: 'Test company international B.V',
+  name: 'Test company international 1234 1234 1234 B.V',
   email: 'test@email.com',
   address: {
-    streetAddress: 'Another test street address',
-    postalCode: '9875AB',
+    streetAddress: 'some test street 123',
+    postalCode: '9875 AB',
     city: 'Rotterdam',
     country: 'Netherlands',
   },
@@ -31,19 +31,22 @@ const invoiceInfo = {
 }
 
 const items = [
-  { name: 'testasht ashta sht asht ', price: '€12.01', quantity: 5, taxRate: 21 },
+  { name: 'test', price: '12.34', quantity: 1, taxRate: '9' },
+  { name: 'test', price: '13.45', quantity: 2, taxRate: '21' },
+  { name: 'test', price: '9.99', quantity: 3, taxRate: '21' },
+  { name: 'testasht ashta sht asht ', price: '12.01', quantity: 5, taxRate: 21 },
   {
     name: 'some  ahst ahashasht ahtaahsr  ahst a ahst aasht ash tash asht ash tasht ',
-    price: '€1055000.01',
+    price: '1055000.01',
     quantity: 2,
     taxRate: 21,
   },
-  { name: 'another1', price: '€116.01', quantity: 1, taxRate: 21 },
-  { name: 'another2', price: '€116.01', quantity: 1, taxRate: 21 },
-  { name: 'another3', price: '€116.01', quantity: 1, taxRate: 21 },
-  { name: 'another4', price: '€116.01', quantity: 1, taxRate: 21 },
-  { name: 'another5', price: '€116.01', quantity: 1, taxRate: 21 },
-  { name: 'another6', price: '€116.01', quantity: 1, taxRate: 21 },
+  { name: 'another1', price: '116.01', quantity: 1, taxRate: 21 },
+  { name: 'another2', price: '116.01', quantity: 1, taxRate: 21 },
+  { name: 'another3', price: '116.01', quantity: 1, taxRate: 21 },
+  { name: 'another4', price: '116.01', quantity: 1, taxRate: 21 },
+  { name: 'another5', price: '116.01', quantity: 1, taxRate: 21 },
+  { name: 'another6', price: '116.01', quantity: 1, taxRate: 21 },
 ]
 
 const totalPrices = {

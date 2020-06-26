@@ -71,7 +71,7 @@ describe('domain#invoice', () => {
       const res = mkSender({} as any)
 
       await expect(res).rejects.toThrowError(
-        /name.+email.+phone.+btw.+iban.+address.+streetAddress.+postalCode.+city.+country./,
+        /name.+email.+phone.+btw.+kvk.+iban.+address.+streetAddress.+postalCode.+city.+country./,
       )
     })
     test('should return sender if input is correct', async () => {
@@ -80,6 +80,7 @@ describe('domain#invoice', () => {
         email: 'email is not validated though',
         phone: '1234567890',
         btw: 'abcdefgh',
+        kvk: '1234',
         iban: '123412341234',
         address: {
           streetAddress: 'street1',

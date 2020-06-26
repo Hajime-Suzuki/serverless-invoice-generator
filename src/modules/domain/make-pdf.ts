@@ -1,6 +1,7 @@
 import { Port, Payload } from './port'
 import { Maybe } from '@modules/types'
 import { mkInvoice } from './invoice'
+import { getTotals } from '@modules/utils/caclulation'
 
 const main = (adapter: Port) => async ({ payload }: { payload: Maybe<Payload> }) => {
   if (!payload) throw new Error('body can not be empty')
@@ -9,7 +10,7 @@ const main = (adapter: Port) => async ({ payload }: { payload: Maybe<Payload> })
 
   const pdf = await adapter.renderPdf({
     ...invoice,
-    totals: { total: '1234', subtotal: '1234', taxTotal: '12' },
+    totals: getTotals(invoice.items),
   })
 
   const res = await adapter.savePdf(pdf)

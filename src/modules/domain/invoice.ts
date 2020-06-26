@@ -37,7 +37,7 @@ type InvoiceInfo = {
   invoiceDate: string
 }
 
-type Item = {
+export type Item = {
   name: string
   price: string
   quantity: number

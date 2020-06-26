@@ -43,6 +43,7 @@
     "@types/yup": "^0.29.2",
     "chrome-aws-lambda": "^2.1.1",
     "date-fns": "^2.14.0",
+    "decimal.js": "^10.2.0",
     "pug": "^2.0.4",
     "puppeteer-core": "^2.1.1",
     "yup": "^0.29.1"
