@@ -15,6 +15,7 @@ type Sender = {
   email: string
   phone: string
   btw: string
+  kvk: string
   iban: string
   address: Address
 }
@@ -29,6 +30,7 @@ type Address = {
   streetAddress: string
   postalCode: string
   city: string
+  country: string
 }
 
 type InvoiceInfo = {

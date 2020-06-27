@@ -21,6 +21,7 @@ const renderPdf: RenderPdf = templatePath => async data => {
     format: 'A4',
   })
 
+  await browser.close()
   return pdf
 }
 
