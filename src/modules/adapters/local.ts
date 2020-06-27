@@ -1,4 +1,4 @@
-import { generatePdf } from '@modules/domain/make-pdf'
+import { makePdfUseCase } from '@modules/domain/make-pdf-use-case'
 import { Port, Adapter } from '@modules/domain/port'
 import { fileRepo } from '@modules/resources/files/file-repo'
 import { pdfRepo } from '@modules/resources/pdf/pdf-repo'
@@ -19,7 +19,7 @@ const _localWithS3Port: Port = {
 }
 
 export const localAdapter: Adapter = port => async () => {
-  const res = await generatePdf(port)({ payload: data.invoice, key: data.key })
+  const res = await makePdfUseCase(port)({ payload: data.invoice, key: data.key })
 
   return res
 }

@@ -1,4 +1,4 @@
-import { generatePdf } from '@modules/domain/make-pdf'
+import { makePdfUseCase } from '@modules/domain/make-pdf-use-case'
 import { Adapter, Port } from '@modules/domain/port'
 import { pdfRepo } from '@modules/resources/pdf/pdf-repo'
 import { getS3, s3Repo } from '@modules/resources/s3/s3-repo'
@@ -18,6 +18,6 @@ export const prodPort: Port = {
 
 export const prodAdapter: Adapter = port => async event => {
   const payload = parseEventBody<GatewayBody>(event)
-  const res = await generatePdf(port)({ payload: payload?.invoice, key: payload?.key })
+  const res = await makePdfUseCase(port)({ payload: payload?.invoice, key: payload?.key })
   return res
 }

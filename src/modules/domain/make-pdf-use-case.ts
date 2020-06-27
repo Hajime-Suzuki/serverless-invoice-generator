@@ -18,4 +18,4 @@ const main = (deps: Port) => async (args: { payload: Maybe<Payload>; key?: Maybe
   return res
 }
 
-export const generatePdf = main
+export const makePdfUseCase = main
