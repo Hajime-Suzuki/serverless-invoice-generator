@@ -1,0 +1,156 @@
+@import './reset';
+
+html {
+  -webkit-print-color-adjust: exact;
+}
+
+$main_space_unit: 15mm;
+$font_color: rgb(83, 83, 83);
+.bg {
+  width: 210mm;
+  height: 297mm;
+  position: fixed;
+  background-size: cover;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+}
+
+.wrapper {
+  position: relative;
+  width: 210mm;
+  box-sizing: border-box;
+  padding: $main_space_unit;
+  padding-bottom: 0;
+  color: $font_color;
+  font-family: 'Share Tech';
+  font-size: 17px;
+  line-height: 1.5em;
+  z-index: 9999;
+}
+
+.spacer {
+  width: 100%;
+  margin-top: $main_space_unit;
+}
+
+.logo-section {
+  margin: auto;
+
+  .logo {
+    width: 25mm;
+    margin: auto;
+  }
+
+  .name {
+    margin-top: 5mm;
+    width: 35mm;
+    margin: auto;
+  }
+
+  .name path,
+  .logo path {
+    fill: #555555;
+  }
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.basic-info {
+  $line_break_margin: 27px;
+  %with_line_break {
+    margin-left: $line_break_margin;
+    text-indent: -$line_break_margin;
+    overflow-wrap: break-word;
+  }
+  width: 31%;
+  .group {
+    margin: 1em 0;
+    &:first-child {
+      margin: 0;
+    }
+    &:last-child {
+      margin: 0;
+    }
+  }
+  .email {
+    @extend %with_line_break;
+  }
+  .address {
+    @extend %with_line_break;
+  }
+  .invoice-number {
+    @extend %with_line_break;
+  }
+  .user-name {
+    font-size: 120%;
+    font-weight: bold;
+  }
+  i {
+    display: inline;
+    vertical-align: middle;
+    color: lighten($font_color, 15%);
+    font-size: 1.3em;
+    margin-right: 1mm;
+  }
+}
+
+.client-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 50%;
+  .invoice-number {
+    font-size: 1.6em;
+    line-height: 1em;
+  }
+  .name {
+    font-size: 1.3em;
+  }
+}
+
+.table {
+  $tablePadding: 10mm;
+  $tableWidth: 100;
+  width: 100%;
+  tr {
+    border-bottom: 1px solid rgb(177, 177, 177);
+  }
+  .name {
+    padding-left: $tablePadding;
+  }
+  .narrow {
+    width: $tableWidth;
+    text-align: center;
+  }
+  .narrow.price {
+    text-align: right;
+    padding-right: 23px;
+  }
+  .total-table-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    .total-section {
+      width: $tableWidth * 3;
+      &:last-of-type {
+        border: none;
+      }
+      .label {
+        font-weight: bold;
+        text-align: center;
+        width: $tableWidth;
+        color: #193d1c;
+      }
+      .price {
+        width: $tableWidth * 2;
+        padding-right: $main_space_unit/2;
+        text-align: right;
+      }
+    }
+  }
+}
