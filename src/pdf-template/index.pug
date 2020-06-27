@@ -1,10 +1,12 @@
+doctype html
 html 
   head
-    link(href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet")
     link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
     style
       include ./materialize.min.css
       include ./index.css
+      
   body
     .bg(style='background-image: url(' + bgUrl + ')') 
 
@@ -21,9 +23,8 @@ html
 
       .main
         .client-info
-          .group
-            p.invoice-number Factuur #{invoiceInfo.invoiceNumber}
-          .group
+          .invoice-number Factuur #{invoiceInfo.invoiceNumber}
+          .name-and-address
             p.name #{receiver.name} 
             p.address #{receiver.address.streetAddress}, #{receiver.address.postalCode} #{receiver.address.city}
 
@@ -59,18 +60,18 @@ html
             tbody
               each item in items
                 tr
-                  td.name #{item.name || ''}
-                  td.narrow.price #{item.price || ''}
-                  td.narrow #{item.quantity || ''}
-                  td.narrow #{item.taxRate || ''}%
+                  td.name #{item.name}
+                  td.narrow.price € #{item.price}
+                  td.narrow #{item.quantity}
+                  td.narrow #{item.taxRate}%
           table
             tbody.total-table-body
               tr.total-section
                 td.label Subtotaal             
-                td.price #{totals.subtotal || ''}
+                td.price € #{totals.subtotal}
               tr.total-section
                 td.label BTW
-                td.price #{totals.taxTotal || ''}
+                td.price € #{totals.taxTotal}
               tr.total-section
                 td.label Totaal            
-                td.price #{totals.total || ''}
+                td.price € #{totals.total}

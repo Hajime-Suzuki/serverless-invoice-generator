@@ -222,16 +222,22 @@ html {
 
 .client-info {
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
   width: 50%;
 }
+
 .client-info .invoice-number {
-  font-size: 1.75em;
+  font-size: 1.3em;
   line-height: 1em;
+  width: 100%;
 }
+
+.client-info .name-and-address {
+  width: 100%;
+}
+
 .client-info .name {
-  font-size: 1.4em;
+  font-size: 1.3em;
 }
 
 .table {
