@@ -5,7 +5,7 @@ export type Port = {
   savePdf: (
     pdf: Buffer,
     options?: {
-      key: string
+      key?: Maybe<string>
     },
   ) => Promise<{
     url: string

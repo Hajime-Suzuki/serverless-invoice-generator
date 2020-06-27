@@ -108,3 +108,5 @@ dist
 **/*.http
 
 *.pdf
+
+dev-data.ts
