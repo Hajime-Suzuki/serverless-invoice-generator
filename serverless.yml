@@ -21,7 +21,7 @@ provider:
         - 's3:PutObject'
         - 's3:ListObject'
         - 's3:GetObject'
-      Resource: arn:aws:s3::::${self:provider.environment.BUCKET}
+      Resource: arn:aws:s3:::${self:provider.environment.BUCKET}/*
 
 custom:
   params:

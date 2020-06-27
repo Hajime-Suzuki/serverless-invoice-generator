@@ -1,6 +1,6 @@
 main:
   handler: src/main.handler
-  name: ${self:service}__generate-invoice
+  name: ${self:custom.params.stage}__${self:service}__generate-invoice
   memorySize: 2048
   timeout: 20
   events:
