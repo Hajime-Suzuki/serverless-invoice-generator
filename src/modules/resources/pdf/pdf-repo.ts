@@ -5,7 +5,7 @@ import { getBrowser } from '../puppeteer/puppeteer'
 
 type RenderPdf = (templatePath: string) => Port['renderPdf']
 
-export const renderPdf: RenderPdf = templatePath => async data => {
+const renderPdf: RenderPdf = templatePath => async data => {
   const bgimg = fs.readFileSync(templatePath + '/bg.jpg', { encoding: 'base64' })
 
   const html = pug.renderFile(`${templatePath}/index.pug`, {
@@ -13,7 +13,6 @@ export const renderPdf: RenderPdf = templatePath => async data => {
     ...data,
     bgUrl: `data:image/jpeg;base64,${bgimg}`,
   })
-
   const browser = await getBrowser()
   const page = await browser.newPage()
   await page.setContent(html, { waitUntil: 'networkidle0' })
@@ -23,4 +22,8 @@ export const renderPdf: RenderPdf = templatePath => async data => {
   })
 
   return pdf
+}
+
+export const pdfRepo: { renderPdf: RenderPdf } = {
+  renderPdf,
 }

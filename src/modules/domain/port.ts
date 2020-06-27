@@ -1,5 +1,6 @@
 import { Maybe } from '@modules/types'
 import { Invoice } from './invoice'
+import { APIGatewayEvent } from 'aws-lambda'
 
 export type Port = {
   savePdf: (
@@ -16,4 +17,7 @@ export type Port = {
     },
   ) => Promise<Buffer>
 }
+
 export type Payload = Maybe<Invoice>
+
+export type Adapter = (port: Port) => (event: APIGatewayEvent) => Promise<{ url: string }>

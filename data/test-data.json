@@ -53,49 +53,49 @@
         "name": "testasht ashta sht asht ",
         "price": "12.01",
         "quantity": 5,
-        "taxRate": 21
+        "taxRate": "21"
       },
       {
         "name": "some  ahst ahashasht ahtaahsr  ahst a ahst aasht ash tash asht ash tasht ",
         "price": "1055000.01",
         "quantity": 2,
-        "taxRate": 21
+        "taxRate": "21"
       },
       {
         "name": "another1",
         "price": "116.01",
         "quantity": 1,
-        "taxRate": 21
+        "taxRate": "21"
       },
       {
         "name": "another2",
         "price": "116.01",
         "quantity": 1,
-        "taxRate": 21
+        "taxRate": "21"
       },
       {
         "name": "another3",
         "price": "116.01",
         "quantity": 1,
-        "taxRate": 21
+        "taxRate": "21"
       },
       {
         "name": "another4",
         "price": "116.01",
         "quantity": 1,
-        "taxRate": 21
+        "taxRate": "21"
       },
       {
         "name": "another5",
         "price": "116.01",
         "quantity": 1,
-        "taxRate": 21
+        "taxRate": "21"
       },
       {
         "name": "another6",
         "price": "116.01",
         "quantity": 1,
-        "taxRate": 21
+        "taxRate": "21"
       }
     ]
   }

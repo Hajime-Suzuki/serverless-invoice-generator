@@ -1,4 +1,4 @@
-import * as chromium from 'chrome-aws-lambda'
+import chromium from 'chrome-aws-lambda'
 
 export const getBrowser = async () => {
   const browser = await chromium.puppeteer.launch({
@@ -7,6 +7,5 @@ export const getBrowser = async () => {
     defaultViewport: chromium.defaultViewport,
     headless: true,
   })
-
   return browser
 }

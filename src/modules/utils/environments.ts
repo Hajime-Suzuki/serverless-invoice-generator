@@ -1,4 +1,4 @@
-export const STAGE = process.env.STAGE as string
+export const STAGE = (process.env.STAGE || 'local') as 'prod' | 'dev' | 'local'
 
 export const IS_LOCAL = STAGE !== 'prod' && STAGE !== 'dev'
 
