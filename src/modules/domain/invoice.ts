@@ -2,6 +2,7 @@ import { formatDate } from '@modules/utils/date'
 import { assertValidData, validate } from '@modules/utils/validation'
 import * as yup from 'yup'
 import { Maybe } from '@modules/types'
+import { Decimal } from 'decimal.js'
 
 export type Invoice = {
   invoiceInfo: InvoiceInfo
@@ -105,7 +106,7 @@ export const mkItems = async (payload: Maybe<Item[]>) => {
 
   assertValidData(res)
 
-  return res
+  return res.map(v => ({ ...v, price: new Decimal(v.price).toFixed(2) }))
 }
 
 export const mkReceiver = async (payload: Maybe<Receiver>) => {

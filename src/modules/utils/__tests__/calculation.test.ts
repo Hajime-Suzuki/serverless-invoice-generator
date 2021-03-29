@@ -19,5 +19,18 @@ describe('utils.calculation', () => {
 
       expect(res).toMatchObject(expected)
     })
+
+    test('format decimals: 121 -> 121.00', () => {
+      const items: Invoice['items'] = [{ name: 'test', price: '100', quantity: 1, taxRate: '21' }]
+
+      const expected = {
+        subtotal: '100.00',
+        taxTotal: '21.00',
+        total: '121.00',
+      }
+      const res = getTotals(items)
+
+      expect(res).toMatchObject(expected)
+    })
   })
 })

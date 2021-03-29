@@ -40,6 +40,19 @@ describe('domain#invoice', () => {
       const res = await mkItems(items)
       expect(res).toMatchObject(items)
     })
+    test('should format price', async () => {
+      const item1 = { name: 'item1', price: '100', quantity: 1, taxRate: '21' }
+      const expected1 = { ...item1, price: '100.00' }
+
+      const res1 = await mkItems([item1])
+      expect(res1).toMatchObject([expected1])
+
+      const item2 = { name: 'item1', price: '100.1', quantity: 1, taxRate: '21' }
+      const expected2 = { ...item1, price: '100.10' }
+
+      const res = await mkItems([item2])
+      expect(res).toMatchObject([expected2])
+    })
   })
 
   describe('Receiver', () => {
