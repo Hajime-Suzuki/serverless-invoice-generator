@@ -31,7 +31,7 @@
     "gulp-sass": "^4.1.0",
     "jest": "^25.1.0",
     "majestic": "^1.7.0",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "prettier": "^1.19.1",
     "puppeteer": "^2.1.1",
     "serverless": "^1.64.1",
